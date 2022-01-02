@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 
 
-
 const Header = () => {
 	const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -13,9 +12,6 @@ const Header = () => {
 	const [password , setPassword] = useState("")
 	const [login_name , setlogin_name] = useState(localStorage.getItem('first_name'))
 	
-
-	
-
 	function loginFun(){
 		console.warn(username , password)
         fetch("http://192.168.43.102:8000/UserLogin",{
@@ -80,8 +76,6 @@ const Header = () => {
       </Modal>
 
 
-
-
             <section class="banner">
 			<header class="header">
 				<nav class="nav-head text-center">
@@ -92,7 +86,8 @@ const Header = () => {
         	<label class="label" for="toggle"><i class="fas fa-bars"></i></label>
 					<ul class="nav__menu uppercase">
 						<li><Link to="/" class="active nav__link" >home</Link></li>
-						
+						<li><Link to="/shoes" class="nav__link" >Shoes</Link></li>
+						<li><Link to="/shop" class="nav__link" >Shop</Link></li>
 						<li><Link class="nav__link" to="contact">contact</Link></li>
 
 					

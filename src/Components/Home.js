@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [shopingitem , setShopingitem] = useState([])
+	const [cardid , setCardId] = useState("")
+	
     
         useEffect(()=>{
             fetch("http://192.168.43.102:8000/SellingItemList").then((result)=>
@@ -12,21 +14,25 @@ const Home = () => {
         })
         )
         },[])
+		
 
 
     return (
         <div>
             <section>
 			<div class="common-wrapper">
-				<div class="arrival-heading uppercase"><h2>New Arrivals</h2></div>
+				<div class="arrival-heading uppercase"><h2>Top Brandh</h2></div>
 				<div class="arrival">
 					
 					{
                         shopingitem.map((res, index)=>
                         
-                        <div class="item item-1">
+						<Link to={`/home/`+res.id}>
+							
+
+                        <div onClick={() => setCardId(res.id)}  class="item item-1">
 						<img class="img-responsive" src={res.image} alt="shoes_image" />
-						<button class="arrival-button uppercase">Add To Card</button>
+						<button class="arrival-button uppercase">View</button>
 						<p class="arrival-item-name uppercase">{res.item_name}</p>
 						<hr class="ruler-arrival" />
 						<p class="arrival-price">&#8377; {res.price}</p>
@@ -38,6 +44,7 @@ const Home = () => {
 							<li><a href="#"><span class="far fa-star"></span></a></li>
 						</ul>
 					</div>
+					</Link>
 					
                         
                         )
