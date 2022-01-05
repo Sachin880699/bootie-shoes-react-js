@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { BaseUrl } from "./http-common";
 
 const Home = () => {
     const [shopingitem , setShopingitem] = useState([])
 	const [cardid , setCardId] = useState("")
+	const [loader, setLoader] = useState();
 	
     
         useEffect(()=>{
-            fetch("http://192.168.43.102:8000/SellingItemList").then((result)=>
+            fetch(BaseUrl+"/SellingItemList").then((result)=>
         result.json().then((resp)=>{
+			setLoader(true)
             setShopingitem(resp.user_list) 
         })
         )
@@ -25,6 +28,7 @@ const Home = () => {
 				<div class="arrival">
 					
 					{
+						loader === true?
                         shopingitem.map((res, index)=>
                         
 						<Link to={`/home/`+res.id}>
@@ -45,9 +49,8 @@ const Home = () => {
 						</ul>
 					</div>
 					</Link>
-					
-                        
                         )
+						:<div><img src="https://i.pinimg.com/originals/97/73/19/9773191809c1d62b43596308438a2a9f.gif"/> </div>
                     }
 
 					

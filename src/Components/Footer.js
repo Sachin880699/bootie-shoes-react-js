@@ -17,7 +17,7 @@ const Footer = () => {
 						</div>
 					</div>
 
-					
+				
 					<div class="news-wrapper">
 						<div class="news">
 							<h5 class="uppercase">newsletter</h5>

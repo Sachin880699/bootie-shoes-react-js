@@ -1,6 +1,7 @@
 import React , {useState , useEffect} from 'react';
 import {withRouter , useParams} from "react-router-dom"
 import "./HomeDetailsPage.css"
+import { BaseUrl } from './http-common';
 
 const Homedetailspage = () => {
     const [shoes , setShoes] = useState([])
@@ -9,9 +10,8 @@ const Homedetailspage = () => {
     const [addtocard , setAddToCard] = useState([])
 
     
-    
     useEffect(() => {
-            fetch("http://192.168.43.102:8000/ShoesDetails",{
+            fetch(BaseUrl+"/ShoesDetails",{
         method:"POST",
         headers:{
             "Accept":"application/json",
@@ -24,7 +24,6 @@ const Homedetailspage = () => {
             
         })
     })
-        
     }, []);
 
     function add_to_card(event){

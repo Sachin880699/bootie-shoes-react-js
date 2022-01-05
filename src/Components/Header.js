@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
+import { BaseUrl } from './http-common';
 
 
 const Header = () => {
@@ -14,7 +15,7 @@ const Header = () => {
 	
 	function loginFun(){
 		console.warn(username , password)
-        fetch("http://192.168.43.102:8000/UserLogin",{
+        fetch( BaseUrl+ "/UserLogin",{
             method:"POST",
             headers:{
                 "Accept":"application/json",

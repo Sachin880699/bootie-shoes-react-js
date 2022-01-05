@@ -1,14 +1,14 @@
 import React, {useEffect , useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BaseUrl } from './http-common';
 
 const Shoes = () => {
     const [shopingitem , setShopingitem] = useState([])
     const [shopingdiscountitem , setShopingdiscountitem] = useState([])
-
     const [filteredData,setFilteredData] = useState("");
 
     useEffect(()=>{
-        fetch("http://192.168.43.102:8000/SellingItemList").then((result)=>
+        fetch(BaseUrl+"/SellingItemList").then((result)=>
     result.json().then((resp)=>{
         console.warn(resp.special_discount_offer)
         setShopingitem(resp.user_list)
@@ -18,7 +18,7 @@ const Shoes = () => {
     },[])
 
     const handleSearch = () =>{
-        fetch("http://192.168.43.102:8000/SellingItemFilter",{
+        fetch(BaseUrl+"/SellingItemFilter",{
             method:"POST",
             headers:{
                 "Accept":"application/json",
